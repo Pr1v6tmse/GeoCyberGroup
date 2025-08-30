@@ -783,46 +783,7 @@
     </style>
 </head>
 <body>
-    <!-- 
-    ========================================
-    IMAGE INSERTION GUIDE FOR GEOCYBERGROUP BROCHURE
-    ========================================
-    
-    HOW TO ADD YOUR IMAGES:
-    
-    1. TEAM MEMBER PHOTOS (Page 6):
-       - Find the team cards section
-       - Look for comments: "TO ADD TEAM MEMBER PHOTO"
-       - Replace src="" with src="your-image-path.jpg"
-       - Recommended size: 300x300px (square photos work best)
-       - Formats: JPG, PNG, or WebP
-       - Example: src="images/team/levan-kapanadze.jpg"
-    
-    2. CONFERENCE/EVENT PHOTOS (Page 6):
-       - Find the conference gallery section
-       - Look for comments: "TO ADD CONFERENCE PHOTO"
-       - Replace src="" with src="your-image-path.jpg"
-       - Recommended size: 400x300px (landscape orientation)
-       - Formats: JPG, PNG, or WebP
-       - Example: src="images/events/blackhat-2024.jpg"
-    
-    3. OPTIONAL ADDITIONS:
-       - Company logo on cover page
-       - Background images for service sections
-       - Client logos or testimonials
-    
-    TIPS:
-    - Keep all images in an "images" folder for organization
-    - Optimize images for web (compress to under 200KB each)
-    - Use consistent naming: lowercase, no spaces (use hyphens)
-    - For missing photos, icons will display as fallback
-    
-    IMAGE PATHS:
-    - Relative path: src="images/photo.jpg" (if images folder is in same directory)
-    - Absolute path: src="https://www.yoursite.com/images/photo.jpg"
-    - Base64: src="data:image/jpeg;base64,..." (for embedded images)
-    -->
-    
+ 
     <!-- Page Indicator -->
     <div class="page-indicator">
         <div class="indicator-dot active"></div>
@@ -844,13 +805,10 @@
             <div class="hex"></div>
         </div>
         <div class="glitch-container">
-            <!-- OPTIONAL LOGO: To add your company logo above the company name -->
-            <!-- Uncomment the lines below and add your logo path -->
-            <!-- 
             <div style="margin-bottom: 30px;">
-                <img src="" alt="GeoCyberGroup Logo" style="height: 100px; filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));">
+                <img src="/images/logo.png" alt="GeoCyberGroup Logo" style="height: 100px; filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));">
             </div>
-            -->
+           
             <h1 class="company-name">GEOCYBERGROUP</h1>
             <p class="tagline">SECURING TOMORROW, TODAY</p>
             <div class="cyber-pills">
@@ -1069,11 +1027,9 @@
             <div class="team-grid">
                 <div class="team-card">
                     <div class="member-avatar">
-                        <!-- TO ADD TEAM MEMBER PHOTO: Replace src="" with src="path/to/levan-photo.jpg" -->
-                        <!-- Recommended image size: 300x300px, JPG or PNG format -->
+
                         <img src="" alt="Levan Kapanadze" style="width: 100%; height: 100%; object-fit: cover; clip-path: inherit;">
-                        <!-- If no photo available, delete the img tag above and uncomment the line below -->
-                        <!-- <span style="font-size: 3em;">👤</span> -->
+                        <span style="font-size: 3em;">👤</span>
                     </div>
                     <div class="member-info">
                         <h3 class="member-name">Levan Kapanadze</h3>
@@ -1085,11 +1041,8 @@
                 
                 <div class="team-card">
                     <div class="member-avatar">
-                        <!-- TO ADD TEAM MEMBER PHOTO: Replace src="" with src="path/to/giorgi-b-photo.jpg" -->
-                        <!-- Recommended image size: 300x300px, JPG or PNG format -->
                         <img src="" alt="Giorgi Bochoidze" style="width: 100%; height: 100%; object-fit: cover; clip-path: inherit;">
-                        <!-- If no photo available, delete the img tag above and uncomment the line below -->
-                        <!-- <span style="font-size: 3em;">👤</span> -->
+                        <span style="font-size: 3em;">👤</span>
                     </div>
                     <div class="member-info">
                         <h3 class="member-name">Giorgi Bochoidze</h3>
@@ -1101,11 +1054,8 @@
                 
                 <div class="team-card">
                     <div class="member-avatar">
-                        <!-- TO ADD TEAM MEMBER PHOTO: Replace src="" with src="path/to/giorgi-k-photo.jpg" -->
-                        <!-- Recommended image size: 300x300px, JPG or PNG format -->
                         <img src="" alt="Giorgi Kokaia" style="width: 100%; height: 100%; object-fit: cover; clip-path: inherit;">
-                        <!-- If no photo available, delete the img tag above and uncomment the line below -->
-                        <!-- <span style="font-size: 3em;">👤</span> -->
+                        <span style="font-size: 3em;">👤</span>
                     </div>
                     <div class="member-info">
                         <h3 class="member-name">Giorgi Kokaia</h3>
@@ -1120,36 +1070,20 @@
                 <h3 class="gallery-title">Field Operations</h3>
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <!-- TO ADD CONFERENCE PHOTO: Replace src="" with src="path/to/blackhat-photo.jpg" -->
-                        <!-- Recommended image size: 400x300px, JPG or PNG format -->
                         <img src="" alt="Black Hat Europe 2024" style="width: 100%; height: 100%; object-fit: cover;">
-                        <!-- If no photo available, delete the img tag above and uncomment the line below -->
-                        <!-- <div class="gallery-icon">🎯</div> -->
                         <div class="gallery-caption">European CyberSecurity Challenge 2023</div>
                     </div>
                     <div class="gallery-item">
-                        <!-- TO ADD AWARD PHOTO: Replace src="" with src="path/to/award-photo.jpg" -->
-                        <!-- Recommended image size: 400x300px, JPG or PNG format -->
-                        <img src="CREST.jpeg" alt="Crest CPSA" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="/images/CREST.jpeg" alt="Crest CPSA" style="width: 100%; height: 100%; object-fit: cover;">
                         <p>CREST CPSA</p>
-                        <!-- If no photo available, delete the img tag above and uncomment the line below -->
-                        <!-- <div class="gallery-icon">🏆</div> -->
                         <div class="gallery-caption">Crest CPSA</div>
                     </div>
                     <div class="gallery-item">
-                        <!-- TO ADD TRAINING PHOTO: Replace src="" with src="path/to/training-photo.jpg" -->
-                        <!-- Recommended image size: 400x300px, JPG or PNG format -->
                         <img src="" alt="Fortune 500 Training" style="width: 100%; height: 100%; object-fit: cover;">
-                        <!-- If no photo available, delete the img tag above and uncomment the line below -->
-                        <!-- <div class="gallery-icon">💼</div> -->
                         <div class="gallery-caption">Fortune 500 Training</div>
                     </div>
                     <div class="gallery-item">
-                        <!-- TO ADD TEAM PHOTO: Replace src="" with src="path/to/rsa-conference-photo.jpg" -->
-                        <!-- Recommended image size: 400x300px, JPG or PNG format -->
                         <img src="" alt="RSA Conference 2024" style="width: 100%; height: 100%; object-fit: cover;">
-                        <!-- If no photo available, delete the img tag above and uncomment the line below -->
-                        <!-- <div class="gallery-icon">🌐</div> -->
                         <div class="gallery-caption">RSA Conference 2024</div>
                     </div>
                 </div>
