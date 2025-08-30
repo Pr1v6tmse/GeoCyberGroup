@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geocybergroup - Next-Gen Cybersecurity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .page {
+            min-height: 100vh;
+            padding: 60px 40px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            page-break-after: always;
+            background: #000000;
+            overflow: hidden;
+        }
+        
+        /* Futuristic Page Indicator */
+        .page-indicator {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .indicator-dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(0, 212, 255, 0.3);
+            border: 1px solid rgba(0, 212, 255, 0.5);
+            border-radius: 50%;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .indicator-dot.active {
+            width: 20px;
+            background: #00d4ff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #00d4ff;
+        }
+        
+        /* COVER PAGE - Hexagon Matrix Design */
+        .cover-page {
+            background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(255, 0, 128, 0.05) 0%, transparent 50%),
+                        #000000;
+        }
+        
+        .hexagon-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .hex {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 212, 255, 0.03);
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            animation: hex-float 20s infinite ease-in-out;
+        }
+        
+        .hex:nth-child(odd) {
+            animation-duration: 25s;
+            animation-direction: reverse;
+        }
+        
+        .hex:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .hex:nth-child(2) { top: 20%; left: 70%; animation-delay: 2s; }
+        .hex:nth-child(3) { top: 60%; left: 20%; animation-delay: 4s; }
+        .hex:nth-child(4) { top: 70%; left: 80%; animation-delay: 6s; }
+        .hex:nth-child(5) { top: 40%; left: 50%; animation-delay: 8s; }
+        
+        @keyframes hex-float {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            33% { transform: translateY(-30px) rotate(120deg) scale(1.1); }
+            66% { transform: translateY(30px) rotate(240deg) scale(0.9); }
+        }
+        
+        .glitch-container {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .company-name {
+            font-size: 5em;
+            font-weight: 100;
+            letter-spacing: 15px;
+            text-transform: uppercase;
+            position: relative;
+            animation: glitch 2s infinite;
+        }
+        
+        .company-name::before,
+        .company-name::after {
+            content: 'GEOCYBERGROUP';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .company-name::before {
+            animation: glitch-1 0.5s infinite;
+            color: #00d4ff;
+            z-index: -1;
+        }
+        
+        .company-name::after {
+            animation: glitch-2 0.5s infinite;
+            color: #ff00ff;
+            z-index: -2;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { text-shadow: 0 0 10px #00d4ff; }
+            50% { text-shadow: 0 0 20px #00d4ff, 0 0 30px #ff00ff; }
+        }
+        
+        @keyframes glitch-1 {
+            0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+            20% { clip-path: inset(20% 0 30% 0); transform: translate(-2px, 2px); }
+            40% { clip-path: inset(50% 0 20% 0); transform: translate(2px, -2px); }
+            60% { clip-path: inset(10% 0 60% 0); transform: translate(-1px, 1px); }
+            80% { clip-path: inset(70% 0 10% 0); transform: translate(1px, -1px); }
+        }
+        
+        @keyframes glitch-2 {
+            0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+            20% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -1px); }
+            40% { clip-path: inset(20% 0 50% 0); transform: translate(-2px, 1px); }
+            60% { clip-path: inset(30% 0 40% 0); transform: translate(1px, -2px); }
+            80% { clip-path: inset(10% 0 70% 0); transform: translate(-1px, 2px); }
+        }
+        
+        .tagline {
+            font-size: 1.2em;
+            color: #00d4ff;
+            letter-spacing: 5px;
+            margin: 30px 0;
+            opacity: 0;
+            animation: fade-in 2s forwards 1s;
+        }
+        
+        @keyframes fade-in {
+            to { opacity: 1; }
+        }
+        
+        .cyber-pills {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 50px;
+            opacity: 0;
+            animation: fade-in 2s forwards 1.5s;
+        }
+        
+        .cyber-pill {
+            padding: 10px 25px;
+            background: transparent;
+            border: 1px solid #00d4ff;
+            clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+            color: #00d4ff;
+            position: relative;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+        
+        .cyber-pill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .cyber-pill:hover::before {
+            left: 100%;
+        }
+        
+        .cyber-pill:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateX(5px);
+            box-shadow: -5px 0 20px rgba(0, 212, 255, 0.5);
+        }
+        
+        /* ABOUT PAGE - Diagonal Split Design */
+        .about-page {
+            background: linear-gradient(135deg, #000000 50%, #0a0a0a 50%);
+        }
+        
+        .section-title {
+            font-size: 3em;
+            font-weight: 200;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            background: linear-gradient(90deg, #00d4ff, #ff00ff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: gradient-shift 3s linear infinite;
+        }
+        
+        @keyframes gradient-shift {
+            to { background-position: 200% center; }
+        }
+        
+        .about-content {
+            max-width: 1000px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .floating-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .stat-card {
+            background: rgba(0, 212, 255, 0.03);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 30px 20px;
+            text-align: center;
+            clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(0, 212, 255, 0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        .stat-card:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .stat-card:hover {
+            background: rgba(0, 212, 255, 0.08);
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            background: linear-gradient(180deg, #00d4ff, #0096ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-label {
+            color: #888;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        /* SERVICES PAGE - Isometric Cards */
+        .services-page {
+            background: #000;
+            position: relative;
+        }
+        
+        .services-3d-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .service-3d-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 212, 255, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+            transform-style: preserve-3d;
+            transform: rotateX(10deg) rotateY(-10deg);
+        }
+        
+        .service-3d-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00d4ff, #ff00ff, #00d4ff);
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: -1;
+        }
+        
+        .service-3d-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-3d-card:hover {
+            transform: rotateX(0) rotateY(0) translateZ(20px);
+            box-shadow: 0 30px 60px rgba(0, 212, 255, 0.4);
+        }
+        
+        .service-icon-3d {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+        }
+        
+        /* TEAM PAGE - Cyberpunk Cards */
+        .team-page {
+            background: #000;
+        }
+        
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .team-card {
+            background: linear-gradient(145deg, rgba(0, 212, 255, 0.05), transparent);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+        }
+        
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            animation: scan 3s infinite;
+        }
+        
+        @keyframes scan {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+        
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #00d4ff, #ff00ff);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            clip-path: inherit;
+        }
+        
+        /* Hide icon when image is present */
+        .member-avatar img:not([src=""]) ~ span {
+            display: none;
+        }
+        
+        /* Show placeholder when no image */
+        .member-avatar img[src=""] {
+            display: none;
+        }
+        
+        .member-avatar img[src=""] ~ span {
+            display: block;
+        }
+        
+        .member-avatar::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: #000;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            z-index: -1;
+        }
+        
+        .member-info {
+            text-align: center;
+        }
+        
+        .member-name {
+            font-size: 1.4em;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        
+        .member-role {
+            color: #00d4ff;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        
+        .member-certs {
+            color: #ff00ff;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .member-bio {
+            color: #aaa;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        
+        /* Conference Gallery */
+        .conference-gallery {
+            position: relative;
+            padding: 40px;
+            background: rgba(0, 212, 255, 0.02);
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        
+        .gallery-title {
+            text-align: center;
+            font-size: 1.8em;
+            color: #00d4ff;
+            margin-bottom: 30px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .gallery-item {
+        position: relative;
+        height: 250px; /* increased from 200px for better space */
+        background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 255, 0.05));
+        border: 1px solid rgba(0, 212, 255, 0.3);
+        overflow: hidden;
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+        transition: all 0.3s;
+    }
+
+        
+        
+        .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1; /* ensure image stays behind */
+    }
+        
+        /* Hide icon when image is present */
+        .gallery-item img:not([src=""]) ~ .gallery-icon {
+            display: none;
+        }
+        
+        /* Show placeholder when no image */
+        .gallery-item img[src=""] {
+            display: none;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5);
+        }
+        
+        .gallery-icon {
+            font-size: 3em;
+            color: rgba(0, 212, 255, 0.3);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .gallery-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 12px 15px;
+        background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+        color: #fff;  /* make text stand out */
+        font-size: 1em;
+        z-index: 2;   /* ensure caption is always above image */
+        text-align: center;
+    }   
+        
+        /* CERTIFICATIONS PAGE - Matrix Rain Effect */
+        .certifications-page {
+            background: #000;
+            position: relative;
+        }
+        
+        .matrix-rain {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0.1;
+        }
+        
+        .matrix-column {
+            position: absolute;
+            top: -100%;
+            font-family: monospace;
+            font-size: 14px;
+            color: #00ff00;
+            animation: matrix-fall 10s linear infinite;
+        }
+        
+        .matrix-column:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .matrix-column:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .matrix-column:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .matrix-column:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .matrix-column:nth-child(5) { left: 90%; animation-delay: 8s; }
+        
+        @keyframes matrix-fall {
+            to { top: 100%; }
+        }
+        
+        .cert-showcase {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .cert-category {
+            margin-bottom: 50px;
+        }
+        
+        .cert-category-header {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            color: #00d4ff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .cert-hexagon-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .cert-hexagon {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            margin: 20px;
+        }
+        
+        .cert-hex-inner {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00d4ff;
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .cert-hexagon.offensive .cert-hex-inner {
+            border-color: #ff4444;
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.3);
+        }
+        
+        .cert-hexagon.giac .cert-hex-inner {
+            border-color: #ffa500;
+            box-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
+        }
+        
+        .cert-hexagon.compliance .cert-hex-inner {
+            border-color: #00ff00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+        
+        .cert-hex-inner:hover {
+            transform: rotate(30deg) scale(1.1);
+            background: rgba(0, 212, 255, 0.1);
+        }
+        
+        .cert-hex-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .cert-hexagon.offensive .cert-hex-name { color: #ff6666; }
+        .cert-hexagon.giac .cert-hex-name { color: #ffa500; }
+        .cert-hexagon.compliance .cert-hex-name { color: #00ff00; }
+        .cert-hexagon .cert-hex-name { color: #00d4ff; }
+        
+        /* CONTACT PAGE - Holographic Design */
+        .contact-page {
+            background: radial-gradient(circle at center, rgba(0, 212, 255, 0.05) 0%, transparent 70%),
+                        #000;
+        }
+        
+        .contact-hologram {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .contact-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 255, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00d4ff, #ff00ff, #00d4ff);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: -1;
+            filter: blur(5px);
+        }
+        
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.4);
+        }
+        
+        .contact-icon {
+            font-size: 2.5em;
+            color: #00d4ff;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+        }
+        
+        .cta-hologram {
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), transparent);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-hologram::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            animation: hologram-sweep 3s infinite;
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+        
+        @keyframes hologram-sweep {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 50px;
+            background: linear-gradient(90deg, #00d4ff, #ff00ff);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.6);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page { padding: 40px 20px; }
+            .company-name { font-size: 3em; letter-spacing: 8px; }
+            .section-title { font-size: 2em; }
+            .services-3d-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
+            .page-indicator { display: none; }
+        }
+        
+        @media (max-width: 480px) {
+            .company-name { font-size: 2em; letter-spacing: 5px; }
+            .stat-card { min-width: 100%; }
+            .cert-hexagon { width: 120px; height: 120px; }
+        }
+        
+        @media print {
+            .page { page-break-after: always; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    ========================================
+    IMAGE INSERTION GUIDE FOR GEOCYBERGROUP BROCHURE
+    ========================================
+    
+    HOW TO ADD YOUR IMAGES:
+    
+    1. TEAM MEMBER PHOTOS (Page 6):
+       - Find the team cards section
+       - Look for comments: "TO ADD TEAM MEMBER PHOTO"
+       - Replace src="" with src="your-image-path.jpg"
+       - Recommended size: 300x300px (square photos work best)
+       - Formats: JPG, PNG, or WebP
+       - Example: src="images/team/levan-kapanadze.jpg"
+    
+    2. CONFERENCE/EVENT PHOTOS (Page 6):
+       - Find the conference gallery section
+       - Look for comments: "TO ADD CONFERENCE PHOTO"
+       - Replace src="" with src="your-image-path.jpg"
+       - Recommended size: 400x300px (landscape orientation)
+       - Formats: JPG, PNG, or WebP
+       - Example: src="images/events/blackhat-2024.jpg"
+    
+    3. OPTIONAL ADDITIONS:
+       - Company logo on cover page
+       - Background images for service sections
+       - Client logos or testimonials
+    
+    TIPS:
+    - Keep all images in an "images" folder for organization
+    - Optimize images for web (compress to under 200KB each)
+    - Use consistent naming: lowercase, no spaces (use hyphens)
+    - For missing photos, icons will display as fallback
+    
+    IMAGE PATHS:
+    - Relative path: src="images/photo.jpg" (if images folder is in same directory)
+    - Absolute path: src="https://www.yoursite.com/images/photo.jpg"
+    - Base64: src="data:image/jpeg;base64,..." (for embedded images)
+    -->
+    
+    <!-- Page Indicator -->
+    <div class="page-indicator">
+        <div class="indicator-dot active"></div>
+        <div class="indicator-dot"></div>
+        <div class="indicator-dot"></div>
+        <div class="indicator-dot"></div>
+        <div class="indicator-dot"></div>
+        <div class="indicator-dot"></div>
+        <div class="indicator-dot"></div>
+    </div>
+
+    <!-- Cover Page -->
+    <div class="page cover-page">
+        <div class="hexagon-grid">
+            <div class="hex"></div>
+            <div class="hex"></div>
+            <div class="hex"></div>
+            <div class="hex"></div>
+            <div class="hex"></div>
+        </div>
+        <div class="glitch-container">
+            <!-- OPTIONAL LOGO: To add your company logo above the company name -->
+            <!-- Uncomment the lines below and add your logo path -->
+            <!-- 
+            <div style="margin-bottom: 30px;">
+                <img src="" alt="GeoCyberGroup Logo" style="height: 100px; filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));">
+            </div>
+            -->
+            <h1 class="company-name">GEOCYBERGROUP</h1>
+            <p class="tagline">SECURING TOMORROW, TODAY</p>
+            <div class="cyber-pills">
+                <div class="cyber-pill">Penetration Testing</div>
+                <div class="cyber-pill">Risk Assessment</div>
+                <div class="cyber-pill">InfoSec Audit</div>
+                <div class="cyber-pill">GRC Compliance</div>
+                <div class="cyber-pill">Security Training</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- About Page -->
+    <div class="page about-page">
+        <h2 class="section-title">About GeoCyberGroup</h2>
+        <div class="about-content">
+            <p style="text-align: center; font-size: 1.2em; color: #ccc; margin-bottom: 40px;">Elite cybersecurity professionals with 15-20 years of battlefield experience. We don't just protect systems – we think like attackers to stay ahead of them.</p>
+            
+            <div class="floating-stats">
+                <div class="stat-card">
+                    <div class="stat-number">15-20</div>
+                    <div class="stat-label">Years Elite</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Missions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Certs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Defense</div>
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), transparent); border-left: 3px solid #00d4ff; padding: 30px; margin: 40px 0;">
+                <h3 style="color: #00d4ff; margin-bottom: 20px; font-size: 1.5em;">Battle-Tested Expertise</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 10px 0; color: #ccc;">⚡ Government-grade security implementations</li>
+                    <li style="padding: 10px 0; color: #ccc;">⚡ Fortune 500 penetration testing campaigns</li>
+                    <li style="padding: 10px 0; color: #ccc;">⚡ NIST & ISO framework masters</li>
+                    <li style="padding: 10px 0; color: #ccc;">⚡ OffSec & GIAC certified attack specialists</li>
+                    <li style="padding: 10px 0; color: #ccc;">⚡ OT/IoT critical infrastructure defenders</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Services Page -->
+    <div class="page services-page">
+        <h2 class="section-title">Our Arsenal</h2>
+        <div class="services-3d-grid">
+            <div class="service-3d-card">
+                <div class="service-icon-3d">🛡️</div>
+                <div>Cyber Security</div>
+            </div>
+            <div class="service-3d-card">
+                <div class="service-icon-3d">🔐</div>
+                <div>InfoSec</div>
+            </div>
+            <div class="service-3d-card">
+                <div class="service-icon-3d">⚔️</div>
+                <div>Penetration Testing</div>
+            </div>
+            <div class="service-3d-card">
+                <div class="service-icon-3d">🎯</div>
+                <div>Vulnerability Scanning</div>
+            </div>
+            <div class="service-3d-card">
+                <div class="service-icon-3d">💻</div>
+                <div>Secure Dev</div>
+            </div>
+            <div class="service-3d-card">
+                <div class="service-icon-3d">📡</div>
+                <div>SIEM/SOC</div>
+            </div>
+            <div class="service-3d-card">
+                <div class="service-icon-3d">📋</div>
+                <div>GRC</div>
+            </div>
+            <div class="service-3d-card">
+                <div class="service-icon-3d">🔒</div>
+                <div>GDPR</div>
+            </div>
+            <div class="service-3d-card">
+                <div class="service-icon-3d">💾</div>
+                <div>Data Defense</div>
+            </div>
+            <div class="service-3d-card">
+                <div class="service-icon-3d">🎓</div>
+                <div>Cyber Training</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Service Details Page -->
+    <div class="page">
+        <h2 class="section-title">Mission Capabilities</h2>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+                <div style="background: rgba(255, 0, 0, 0.05); border: 1px solid rgba(255, 0, 0, 0.3); padding: 25px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);">
+                    <h3 style="color: #ff4444; margin-bottom: 20px;">🎯 Offensive Operations</h3>
+                    <p style="color: #aaa; line-height: 1.8;">Advanced penetration testing simulating real-world APT tactics. Red team exercises, zero-day research, and vulnerability exploitation.</p>
+                </div>
+                <div style="background: rgba(0, 255, 0, 0.05); border: 1px solid rgba(0, 255, 0, 0.3); padding: 25px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);">
+                    <h3 style="color: #00ff00; margin-bottom: 20px;">🛡️ Defense Systems</h3>
+                    <p style="color: #aaa; line-height: 1.8;">24/7 SOC operations, incident response, threat hunting, and digital forensics. Real-time threat intelligence and proactive defense.</p>
+                </div>
+                <div style="background: rgba(0, 150, 255, 0.05); border: 1px solid rgba(0, 150, 255, 0.3); padding: 25px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);">
+                    <h3 style="color: #0096ff; margin-bottom: 20px;">📋 Compliance Ops</h3>
+                    <p style="color: #aaa; line-height: 1.8;">ISO 27001/27002 implementation, NIST framework alignment, GDPR compliance, and GRC strategy development.</p>
+                </div>
+                <div style="background: rgba(255, 165, 0, 0.05); border: 1px solid rgba(255, 165, 0, 0.3); padding: 25px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);">
+                    <h3 style="color: #ffa500; margin-bottom: 20px;">🎓 Elite Training</h3>
+                    <p style="color: #aaa; line-height: 1.8;">Hands-on security training, capture-the-flag exercises, security awareness programs, and custom workshops.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Certifications Page -->
+    <div class="page certifications-page">
+        <div class="matrix-rain">
+            <div class="matrix-column">01001000 01000001 01000011 01001011</div>
+            <div class="matrix-column">01000011 01011001 01000010 01000101 01010010</div>
+            <div class="matrix-column">01010011 01000101 01000011 01010101 01010010 01000101</div>
+            <div class="matrix-column">01000100 01000101 01000110 01000101 01001110 01000100</div>
+            <div class="matrix-column">01000001 01010100 01010100 01000001 01000011 01001011</div>
+        </div>
+        
+        <div class="cert-showcase">
+            <h2 class="section-title">Combat Certifications</h2>
+            
+            <div class="cert-category">
+                <h3 class="cert-category-header">⚔️ Offensive Security</h3>
+                <div class="cert-hexagon-grid">
+                    <div class="cert-hexagon offensive">
+                        <div class="cert-hex-inner">
+                            <div class="cert-hex-name">OSCP</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cert-category">
+                <h3 class="cert-category-header">🎯 GIAC Arsenal</h3>
+                <div class="cert-hexagon-grid">
+                    <div class="cert-hexagon giac">
+                        <div class="cert-hex-inner">
+                            <div class="cert-hex-name">GCIA</div>
+                        </div>
+                    </div>
+                    <div class="cert-hexagon giac">
+                        <div class="cert-hex-inner">
+                            <div class="cert-hex-name">GCIH</div>
+                        </div>
+                    </div>
+                    <div class="cert-hexagon giac">
+                        <div class="cert-hex-inner">
+                            <div class="cert-hex-name">GCCC</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cert-category">
+                <h3 class="cert-category-header">🛡️ Compliance Command</h3>
+                <div class="cert-hexagon-grid">
+                    <div class="cert-hexagon compliance">
+                        <div class="cert-hex-inner">
+                            <div class="cert-hex-name">CISSP</div>
+                        </div>
+                    </div>
+                    <div class="cert-hexagon compliance">
+                        <div class="cert-hex-inner">
+                            <div class="cert-hex-name">ISO</div>
+                        </div>
+                    </div>
+                    <div class="cert-hexagon compliance">
+                        <div class="cert-hex-inner">
+                            <div class="cert-hex-name">NIST</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cert-category">
+                <h3 class="cert-category-header">🔧 Technical Ops</h3>
+                <div class="cert-hexagon-grid">
+                    <div class="cert-hexagon">
+                        <div class="cert-hex-inner">
+                            <div class="cert-hex-name">CEH</div>
+                        </div>
+                    </div>
+                    <div class="cert-hexagon">
+                        <div class="cert-hex-inner">
+                            <div class="cert-hex-name">CCNA</div>
+                        </div>
+                    </div>
+                    <div class="cert-hexagon">
+                        <div class="cert-hex-inner">
+                            <div class="cert-hex-name">EJPT</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Team Page -->
+    <div class="page team-page">
+        <h2 class="section-title">Strike Team</h2>
+        <div class="team-container">
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="member-avatar">
+                        <!-- TO ADD TEAM MEMBER PHOTO: Replace src="" with src="path/to/levan-photo.jpg" -->
+                        <!-- Recommended image size: 300x300px, JPG or PNG format -->
+                        <img src="" alt="Levan Kapanadze" style="width: 100%; height: 100%; object-fit: cover; clip-path: inherit;">
+                        <!-- If no photo available, delete the img tag above and uncomment the line below -->
+                        <!-- <span style="font-size: 3em;">👤</span> -->
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Levan Kapanadze</h3>
+                        <p class="member-role">Chief Executive Officer</p>
+                        <div class="member-certs">CISSP • ISO 27001</div>
+                        <p class="member-bio">20+ years commanding cybersecurity operations</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="member-avatar">
+                        <!-- TO ADD TEAM MEMBER PHOTO: Replace src="" with src="path/to/giorgi-b-photo.jpg" -->
+                        <!-- Recommended image size: 300x300px, JPG or PNG format -->
+                        <img src="" alt="Giorgi Bochoidze" style="width: 100%; height: 100%; object-fit: cover; clip-path: inherit;">
+                        <!-- If no photo available, delete the img tag above and uncomment the line below -->
+                        <!-- <span style="font-size: 3em;">👤</span> -->
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Giorgi Bochoidze</h3>
+                        <p class="member-role">Lead Penetration Tester</p>
+                        <div class="member-certs">OSCP • CEH • GCIH</div>
+                        <p class="member-bio">Elite offensive security specialist</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="member-avatar">
+                        <!-- TO ADD TEAM MEMBER PHOTO: Replace src="" with src="path/to/giorgi-k-photo.jpg" -->
+                        <!-- Recommended image size: 300x300px, JPG or PNG format -->
+                        <img src="" alt="Giorgi Kokaia" style="width: 100%; height: 100%; object-fit: cover; clip-path: inherit;">
+                        <!-- If no photo available, delete the img tag above and uncomment the line below -->
+                        <!-- <span style="font-size: 3em;">👤</span> -->
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Giorgi Kokaia</h3>
+                        <p class="member-role">Penetration Tester</p>
+                        <div class="member-certs">CEH • GCIH • CCNA</div>
+                        <p class="member-bio">Network infiltration expert</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conference-gallery">
+                <h3 class="gallery-title">Field Operations</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <!-- TO ADD CONFERENCE PHOTO: Replace src="" with src="path/to/blackhat-photo.jpg" -->
+                        <!-- Recommended image size: 400x300px, JPG or PNG format -->
+                        <img src="" alt="Black Hat Europe 2024" style="width: 100%; height: 100%; object-fit: cover;">
+                        <!-- If no photo available, delete the img tag above and uncomment the line below -->
+                        <!-- <div class="gallery-icon">🎯</div> -->
+                        <div class="gallery-caption">European CyberSecurity Challenge 2023</div>
+                    </div>
+                    <div class="gallery-item">
+                        <!-- TO ADD AWARD PHOTO: Replace src="" with src="path/to/award-photo.jpg" -->
+                        <!-- Recommended image size: 400x300px, JPG or PNG format -->
+                        <img src="CREST.jpeg" alt="Crest CPSA" style="width: 100%; height: 100%; object-fit: cover;">
+                        <p>CREST CPSA</p>
+                        <!-- If no photo available, delete the img tag above and uncomment the line below -->
+                        <!-- <div class="gallery-icon">🏆</div> -->
+                        <div class="gallery-caption">Crest CPSA</div>
+                    </div>
+                    <div class="gallery-item">
+                        <!-- TO ADD TRAINING PHOTO: Replace src="" with src="path/to/training-photo.jpg" -->
+                        <!-- Recommended image size: 400x300px, JPG or PNG format -->
+                        <img src="" alt="Fortune 500 Training" style="width: 100%; height: 100%; object-fit: cover;">
+                        <!-- If no photo available, delete the img tag above and uncomment the line below -->
+                        <!-- <div class="gallery-icon">💼</div> -->
+                        <div class="gallery-caption">Fortune 500 Training</div>
+                    </div>
+                    <div class="gallery-item">
+                        <!-- TO ADD TEAM PHOTO: Replace src="" with src="path/to/rsa-conference-photo.jpg" -->
+                        <!-- Recommended image size: 400x300px, JPG or PNG format -->
+                        <img src="" alt="RSA Conference 2024" style="width: 100%; height: 100%; object-fit: cover;">
+                        <!-- If no photo available, delete the img tag above and uncomment the line below -->
+                        <!-- <div class="gallery-icon">🌐</div> -->
+                        <div class="gallery-caption">RSA Conference 2024</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contact Page -->
+    <div class="page contact-page">
+        <h2 class="section-title">Establish Contact</h2>
+        <div class="contact-hologram">
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <div class="contact-icon">📡</div>
+                    <h3 style="color: #00d4ff; margin-bottom: 10px;">COMMS</h3>
+                    <p style="color: #ccc;">(+995) 555 989 813<br>(+995) 599 066 160</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3 style="color: #00d4ff; margin-bottom: 10px;">HQ</h3>
+                    <p style="color: #ccc;">Tbilisi International Airport<br>Cargo Terminal<br>00158, Georgia</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">🌐</div>
+                    <h3 style="color: #00d4ff; margin-bottom: 10px;">DIGITAL</h3>
+                    <p style="color: #ccc;">geocybergroup.com<br>info@geocybergroup.com</p>
+                </div>
+            </div>
+            
+            <div class="cta-hologram">
+                <h3 style="font-size: 2em; color: #fff; margin-bottom: 20px;">INITIATE SECURE CHANNEL</h3>
+                <p style="color: #aaa; margin-bottom: 30px;">Deploy elite security protocols for your infrastructure</p>
+                <a href="https://www.geocybergroup.com" class="cta-button">ENGAGE</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Page indicator functionality
+        const pages = document.querySelectorAll('.page');
+        const indicators = document.querySelectorAll('.indicator-dot');
+        
+        window.addEventListener('scroll', () => {
+            let current = 0;
+            pages.forEach((page, index) => {
+                const rect = page.getBoundingClientRect();
+                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    current = index;
+                }
+            });
+            
+            indicators.forEach((dot, index) => {
+                dot.classList.toggle('active', index === current);
+            });
+        });
+        
+        // Click to navigate
+        indicators.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                pages[index].scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
